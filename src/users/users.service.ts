@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 
 import UsersEntity from './users.entity';
 import { UserDto } from './dto';
+import { RETURN_MESSAGES } from 'src/ultilities/constant';
 
 @Injectable()
 export class UsersService {
@@ -44,5 +45,6 @@ export class UsersService {
     if (!deleteUserResponse.affected) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
+    return { message: RETURN_MESSAGES.delete };
   }
 }
