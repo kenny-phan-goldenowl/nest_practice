@@ -3,6 +3,7 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { PostsModule } from './posts/posts.module';
+import { AuthService } from './auth/auth.service';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -22,6 +23,6 @@ import * as Joi from '@hapi/joi';
     PostsModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [AuthService],
 })
 export class AppModule {}

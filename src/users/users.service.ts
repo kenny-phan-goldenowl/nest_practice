@@ -3,7 +3,6 @@ import {
   HttpException,
   HttpStatus,
   Injectable,
-  Param,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError, Repository } from 'typeorm';
@@ -32,15 +31,9 @@ export class UsersService {
   }
 
   async createUser(user: UserDto.Create) {
-    try {
-      const newUser = await this.usersRepository.create(user);
-      await this.usersRepository.save(newUser);
-      return newUser;
-    } catch (error) {
-      if (error instanceof QueryFailedError)
-        throw new ConflictException(error.message);
-      throw error;
-    }
+    const newUser = await this.usersRepository.create(user);
+    await this.usersRepository.save(newUser);
+    return newUser;
   }
 
   async updateUser(id: number, user: UserDto.Update) {

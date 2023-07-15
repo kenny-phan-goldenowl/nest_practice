@@ -19,18 +19,14 @@ export class UsersController {
     return this.usersService.getAllUsers();
   }
 
-  @Get(':id')
-  getUserById(@Param('id') id: string) {
-    return this.usersService.getUserById(Number(id));
+  @Get('email/:email')
+  getUserByEmail(@Param('email') email: string) {
+    return this.usersService.getUserByEmail(email);
   }
 
-  @Get(':email')
-  getUserByEmail(@Param('email') email: string) {
-    console.log(
-      '🚀 ~ file: users.controller.ts:29 ~ UsersController ~ getUserByEmail ~ email:',
-      email,
-    );
-    return this.usersService.getUserByEmail(email);
+  @Get('id/:id')
+  getUserById(@Param('id') id: string) {
+    return this.usersService.getUserById(Number(id));
   }
 
   @Post()
