@@ -24,6 +24,15 @@ export class UsersController {
     return this.usersService.getUserById(Number(id));
   }
 
+  @Get(':email')
+  getUserByEmail(@Param('email') email: string) {
+    console.log(
+      '🚀 ~ file: users.controller.ts:29 ~ UsersController ~ getUserByEmail ~ email:',
+      email,
+    );
+    return this.usersService.getUserByEmail(email);
+  }
+
   @Post()
   createUser(@Body() user: UserDto.Create) {
     return this.usersService.createUser(user);
